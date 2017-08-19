@@ -1,0 +1,28 @@
+AsyncTask
+-To use a thread, this is very helpful.
+https://developer.android.com/reference/android/os/AsyncTask.html
+http://ashon.tistory.com/177
+http://cosmosjs.blog.me/220832109602
+http://mailmail.tistory.com/12
+
+-JSON Example
+https://www.tutorialspoint.com/android/android_json_parser.htm
+http://galmaegi74.tistory.com/11
+http://mailmail.tistory.com/13
+
+-HTTP Connection method.
+http://ywook.tistory.com/22
+
+-How can i use the preferece?
+
+Tutorial
+https://tutorialspoint.com/android
+
+Python tutorial
+https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAcbMi1sH6oAMk4JHw91mC_
+
+Click Effect
+https://blog.naver.com/PostView.nhn?blogId=tkddlf4209&logNo=220648379405&parentCategoryNo=&categoryNo=41&viewDate=&isShowPopularPosts=false&from=postList
+
+Animation Effect
+https://blog.naver.com/PostView.nhn?blogId=tkddlf4209&logNo=220700530627&proxyReferer=https%3A%2F%2Fwww.google.com%2F

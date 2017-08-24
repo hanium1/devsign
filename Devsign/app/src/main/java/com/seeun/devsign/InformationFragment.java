@@ -57,6 +57,4 @@ public class InformationFragment extends Fragment {
         editor.putString("weight", userWeight.getText().toString());
         editor.commit();
     }
-
-
 }

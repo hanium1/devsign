@@ -37,6 +37,7 @@
         <activity android:name=".AddDeviceActivity"></activity>
         <activity android:name=".DeviceScanActivity"></activity>
         <activity android:name=".DeviceControlActivity"></activity>
+        <activity android:name=".ModifyDeviceActivity"></activity>
     </application>
 
 </manifest>

@@ -3,10 +3,8 @@ package com.seeun.devsign;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,18 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import static com.seeun.devsign.HomeFragment.dbHelper;
 import static com.seeun.devsign.MainActivity.sharedPreference;
 
-public class AddDeviceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class ModifyDeviceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     Spinner spinner;
     String[] item;
     Button BTbtn;
     EditText editname;
-    static TextView deviceTv, deviceAddress;
+    static TextView deviceTv2, deviceAddress2;
     ImageButton[] typeImages;
     String selectedType;
     int btnnum, image=-1;
@@ -36,7 +32,7 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_device);
+        setContentView(R.layout.activity_modify_device);
 
         //dbHelper = new DBHelper(getApplicationContext(), "DEVICES.db", null, 1);
 
@@ -65,8 +61,8 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
         typeImages[4] = (ImageButton)findViewById(R.id.type3pink);
         typeImages[5] = (ImageButton)findViewById(R.id.type3yellow);
 
-        deviceTv = (TextView)findViewById(R.id.textView2);
-        deviceAddress = (TextView)findViewById(R.id.textView3);
+        deviceTv2 = (TextView)findViewById(R.id.textView2);
+        deviceAddress2 = (TextView)findViewById(R.id.textView3);
         editname = (EditText)findViewById(R.id.editText);
     }
 
@@ -134,7 +130,7 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
     }
 
     public void saveClick(View view) {
-        String address = deviceAddress.getText().toString();
+        String address = deviceAddress2.getText().toString();
         String name = editname.getText().toString();
         if(address == "" || name == "" || selectedType.equals("선택하세요") || image==-1)
             Toast.makeText(getApplicationContext(), "항목을 모두 확인해주세요", Toast.LENGTH_SHORT).show();
@@ -145,11 +141,19 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
                 SharedPreferences.Editor editor = sharedPreference.edit();
                 editor.putBoolean("Registered["+btnnum+"]",true);
                 editor.commit();
-                finish();
             }catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "삽입 오류 발생", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public void DeleteClick(View view) {
+        dbHelper.delete(btnnum);
+        Toast.makeText(getApplicationContext(), "삭제 완료", Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor editor = sharedPreference.edit();
+        editor.putBoolean("Registered["+btnnum+"]",false);
+        editor.commit();
+        finish();
     }
 }

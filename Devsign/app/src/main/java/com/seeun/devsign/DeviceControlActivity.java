@@ -38,10 +38,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * 주어진 BLE 장치의 경우, 이 활동은 연결하고, 데이터를 표시하고, 장치가 지원하는
- * GATT 섭시ㅡ 및 특서을 표시하기 위한 사용자 인터페이스를 제공함.
+ * GATT 서비스 및 특성을 표시하기 위한 사용자 인터페이스를 제공함.
  * The Activity communicates with {@code BluetoothLeService}, which in turn interacts with the
  * Bluetooth LE API.
  */
@@ -235,7 +236,12 @@ public class DeviceControlActivity extends Activity {
 
     private void displayData(String data) {
         if (data != null) {
+            StringTokenizer st1 = new StringTokenizer(data,"\n");
+            data = st1.nextToken().substring(5); //  0/10
+            StringTokenizer st2 = new StringTokenizer(data,"/");
+            data = st2.nextToken();
             mDataField.setText(data);
+            Log.e("data",""+data);
         }
     }
 

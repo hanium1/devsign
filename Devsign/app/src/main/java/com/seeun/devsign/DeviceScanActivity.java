@@ -36,6 +36,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.seeun.devsign.AddDeviceActivity.deviceAddress;
+import static com.seeun.devsign.AddDeviceActivity.deviceTv;
+import static com.seeun.devsign.ModifyDeviceActivity.deviceAddress2;
+import static com.seeun.devsign.ModifyDeviceActivity.deviceTv2;
+
 /**
  * Activity for scanning and displaying available Bluetooth LE devices.
  */
@@ -147,10 +152,13 @@ public class DeviceScanActivity extends ListActivity {
         mLeDeviceListAdapter.clear();
     }
 
+    //BLE센서 리스트 아이템을 눌렀을 때 발생하는 이벤트
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         final BluetoothDevice device = mLeDeviceListAdapter.getDevice(position);
         if (device == null) return;
+
+/*
         final Intent intent = new Intent(this, DeviceControlActivity.class);
         intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_NAME, device.getName());
         intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());
@@ -159,6 +167,15 @@ public class DeviceScanActivity extends ListActivity {
             mScanning = false;
         }
         startActivity(intent);
+*/
+        try {
+            deviceTv.setText(device.getName());
+            deviceAddress.setText(device.getAddress());
+        }catch (Exception e){
+            deviceTv2.setText(device.getName());
+            deviceAddress2.setText(device.getAddress());
+        }
+        finish();
     }
 
     private void scanLeDevice(final boolean enable) {

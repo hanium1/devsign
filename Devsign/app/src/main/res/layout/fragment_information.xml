@@ -7,10 +7,11 @@
     tools:context="com.seeun.devsign.InformationFragment">
 
     <ScrollView
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,6 +20,18 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/information"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="30dp"
+                />
 
             <com.joooonho.SelectableRoundedImageView
                 android:id="@+id/userphoto"
@@ -31,33 +44,86 @@
                 app:sriv_border_width="2dp"
                 app:sriv_oval="true" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:text="@string/information"
-                android:textStyle="bold" />
+                android:layout_gravity="center">
 
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/name"
-                android:inputType="text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@+id/username"
+                    android:text="이름"
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
-            <EditText
-                android:id="@+id/userheight"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/height"
-                android:inputType="number" />
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="43dp"
+                    android:inputType="text"
+                    />
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/userweight"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/weight"
-                android:inputType="number" />
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignBaseline="@+id/userheight"
+                    android:layout_alignBottom="@+id/userheight"
+                    android:layout_marginEnd="29dp"
+                    android:layout_toStartOf="@+id/userheight"
+                    android:text="키"
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
+
+                <EditText
+                    android:id="@+id/userheight"
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="43dp"
+                    android:inputType="number"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="체중"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignBaseline="@+id/userweight"
+                    android:layout_alignBottom="@+id/userweight"
+                    android:layout_toStartOf="@+id/userweight" />
+
+                <EditText
+                    android:id="@+id/userweight"
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:inputType="number"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="43dp" />
+            </RelativeLayout>
 
             <!--<Button
                 android:id="@+id/saveButton"

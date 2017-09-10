@@ -15,7 +15,6 @@
         android:background="#FFFFFF"
         app:srcCompat="@drawable/ic_plus"
         android:layout_marginLeft="16dp"
-        android:onClick="Btn1Click"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="-35dp"
         app:layout_constraintTop_toBottomOf="@+id/name1" />
@@ -27,7 +26,6 @@
         android:layout_marginLeft="61dp"
         android:layout_marginRight="8dp"
         android:background="#FFFFFF"
-        android:onClick="Btn3Click"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/imageButton4"
@@ -41,7 +39,6 @@
         android:layout_height="103dp"
         android:layout_marginRight="55dp"
         android:background="#FFFFFF"
-        android:onClick="Btn4Click"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/ic_plus"
         android:layout_marginTop="-2dp"
@@ -56,7 +53,6 @@
         android:layout_height="103dp"
         android:layout_marginRight="16dp"
         android:background="#FFFFFF"
-        android:onClick="Btn2Click"
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/ic_plus"
         android:layout_marginTop="-1dp"
@@ -67,7 +63,6 @@
         android:layout_width="112dp"
         android:layout_height="101dp"
         android:background="#FFFFFF"
-        android:onClick="Btn0Click"
         app:srcCompat="@drawable/ic_plus"
         android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/name0"
@@ -83,7 +78,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="-118dp"
-        android:text="37"
+        android:text="  "
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -214,4 +209,13 @@
         app:layout_constraintLeft_toLeftOf="@+id/imageButton3"
         app:layout_constraintRight_toRightOf="@+id/imageButton3"
         app:layout_constraintTop_toBottomOf="@+id/value1" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="disClick"
+        android:text="disconnect"
+        tools:layout_editor_absoluteX="-11dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>

@@ -1,10 +1,13 @@
 package com.seeun.devsign;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import static android.content.ContentValues.TAG;
+import static android.content.Context.BIND_AUTO_CREATE;
 import static com.seeun.devsign.MainActivity.sharedPreference;
 
 
@@ -21,9 +26,9 @@ public class HomeFragment extends Fragment {
     View view;
     Boolean reg[] = new Boolean[5];
     static DBHelper dbHelper;
-    TextView name0,name1,name2,name3,name4;
-    TextView value0,value1,value2,value3,value4;
-    ImageButton imBtn0, imBtn1, imBtn2, imBtn3, imBtn4;
+    public TextView name0,name1,name2,name3,name4;
+    public static TextView value0,value1,value2,value3,value4;
+    static ImageButton imBtn0, imBtn1, imBtn2, imBtn3, imBtn4;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -169,7 +174,7 @@ public class HomeFragment extends Fragment {
     public void imgSet(ImageButton imgBtn, int btnnum){
         switch (dbHelper.getImage(btnnum)){
             case 0 :
-                imgBtn.setImageResource(R.drawable.dumbbell_100_red_connected);
+                imgBtn.setImageResource(R.drawable.dumbbell_100_red);
                 break;
             case 1 :
                 imgBtn.setImageResource(R.drawable.dumbbell_100_blue);
@@ -190,27 +195,13 @@ public class HomeFragment extends Fragment {
                 imgBtn.setImageResource(R.drawable.ic_plus);
         }
     }
-/*
-    private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-            if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
-                mConnected = true;
-                updateConnectionState(R.string.connected);
-                invalidateOptionsMenu();
-            } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
-                mConnected = false;
-                updateConnectionState(R.string.disconnected);
-                invalidateOptionsMenu();
-                clearUI();
-            } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
-                // Show all the supported services and characteristics on the user interface.
-                displayGattServices(mBluetoothLeService.getSupportedGattServices());
-            } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-                displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
-            }
+
+    public void setValue0(String val0) {
+        try {
+            Log.e("val0 : ",""+val0);
+            value0.setText(val0);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-    };
-    */
+    }
 }

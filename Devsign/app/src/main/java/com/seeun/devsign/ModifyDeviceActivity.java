@@ -49,7 +49,7 @@ public class ModifyDeviceActivity extends AppCompatActivity implements AdapterVi
         BTbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DeviceScanActivity.class);
+                Intent i = new Intent(getApplicationContext(), DeviceListActivity.class);
                 startActivity(i);
             }
         });

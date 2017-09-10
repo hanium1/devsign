@@ -1,9 +1,19 @@
 package com.seeun.devsign;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +29,11 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import static android.content.ContentValues.TAG;
 import static com.seeun.devsign.HomeFragment.dbHelper;
 import static com.seeun.devsign.MainActivity.sharedPreference;
 
@@ -29,6 +44,7 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
     Button BTbtn;
     EditText editname;
     static TextView deviceTv, deviceAddress;
+    private BluetoothAdapter mBluetoothAdapter;
     ImageButton[] typeImages;
     String selectedType;
     int btnnum, image=-1;
@@ -38,6 +54,9 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_device);
 
+        final BluetoothManager bluetoothManager =
+                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = bluetoothManager.getAdapter();
         //dbHelper = new DBHelper(getApplicationContext(), "DEVICES.db", null, 1);
 
         btnnum = Integer.parseInt(getIntent().getStringExtra("btnnum"));
@@ -53,7 +72,7 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
         BTbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DeviceScanActivity.class);
+                Intent i = new Intent(getApplicationContext(), DeviceListActivity.class);
                 startActivity(i);
             }
         });
@@ -69,7 +88,6 @@ public class AddDeviceActivity extends AppCompatActivity implements AdapterView.
         deviceAddress = (TextView)findViewById(R.id.textView3);
         editname = (EditText)findViewById(R.id.editText);
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
